@@ -21,6 +21,10 @@
 <div>
     <video id="qr-video"></video>
     <br>
+    <label>
+        <input id="show-scan-region" type="checkbox">
+        Show scan region
+    </label>
 </div>
 
 <div>
@@ -64,6 +68,10 @@
 
     // for debugging
     window.scanner = scanner;
+
+    const scanRegion = document.getElementById('show-scan-region');
+    const label = scanRegion.parentNode;
+    label.parentNode.insertBefore(scanner.$canvas, label.nextSibling);
     scanner.$canvas.style.display = 'block'
     scanner.start();
 
