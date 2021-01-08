@@ -129,9 +129,17 @@
 
 
 var Module = {}
+function test_alert(){
+    alert("Hello! I am an alert box!!");
+}
 
 function QtLoader(config)
 {
+
+    function test_alert(){
+        alert("Hello! I am an alert box!!");
+    }
+
     function webAssemblySupported() {
         return typeof WebAssembly !== "undefined"
     }
@@ -241,6 +249,10 @@ function QtLoader(config)
     publicAPI.resizeCanvasElement = resizeCanvasElement;
     publicAPI.setFontDpi = setFontDpi;
     publicAPI.fontDpi = fontDpi;
+    publicAPI.test_alert = function(){
+        alert("Hello! I am an alert box!!");
+
+    };
 
     restartCount = 0;
 
@@ -377,6 +389,16 @@ function QtLoader(config)
             // emscripten to spam the console log with warnings.
             if (text.startsWith !== undefined && text.startsWith("bad name in getProcAddress:"))
                 return;
+            if(text == "qml: alert1"){
+                var spinner = document.querySelector('#qtspinner');
+                var canvas = document.querySelector('#qtcanvas');
+                var status = document.querySelector('#qtstatus')
+
+                spinner.style.display = 'block';
+                canvas.style.display = 'none';
+                status.innerHTML = loaderStatus + "...";
+            }
+
 
             if (config.stderrEnabled)
                 console.log(text)
@@ -415,6 +437,14 @@ function QtLoader(config)
         Module.mainScriptUrlOrBlob = new Blob([emscriptenModuleSource], {type: 'text/javascript'});
 
         Module.qtCanvasElements = config.canvasElements;
+        Module.test_alert = function(){
+            alert("Hello! I am an alert box!!");
+
+        }
+        config.test_alert = function() {
+            alert("Hello! I am an alert box!!");
+
+        }
 
         config.restart = function() {
 

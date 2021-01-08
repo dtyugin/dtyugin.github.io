@@ -22,6 +22,65 @@
     </style>
   </head>
   <body onload="init()">
+<!--=========================qr code start=============================-->
+<div>
+    <video id="qr-video"  style="display:none;"></video>
+    <br>
+    <label>
+        <input id="show-scan-region" type="checkbox" style="display:none;">
+        Show scan region
+    </label>
+</div>
+
+<b>Detected QR code: </b>
+<span id="cam-qr-result">None</span>
+<br>
+<b>Last detected at: </b>
+<span id="cam-qr-result-timestamp"></span>
+<br>
+<hr>
+
+<script type="module">
+    import QrScanner from "../qr-code-minimal/qr-scanner.min.js";
+    QrScanner.WORKER_PATH = '../qr-code-minimal/qr-scanner-worker.min.js';
+
+    const video = document.getElementById('qr-video');
+    const camHasCamera = document.getElementById('cam-has-camera');
+    const camQrResult = document.getElementById('cam-qr-result');
+    const camQrResultTimestamp = document.getElementById('cam-qr-result-timestamp');
+
+    function setResult(label, result) {
+        label.textContent = result;
+        camQrResultTimestamp.textContent = new Date().toString();
+        label.style.color = 'teal';
+        clearTimeout(label.highlightTimeout);
+        label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
+    }
+
+    // ####### Web Cam Scanning #######
+
+    QrScanner.hasCamera().then(hasCamera => camHasCamera.textContent = hasCamera);
+
+    const scanner = new QrScanner(video, result => setResult(camQrResult, result), error => {
+        camQrResult.textContent = error;
+        camQrResult.style.color = 'inherit';
+    });
+
+
+    // for debugging
+    window.scanner = scanner;
+
+    const scanRegion = document.getElementById('show-scan-region');
+    const label = scanRegion.parentNode;
+    label.parentNode.insertBefore(scanner.$canvas, label.nextSibling);
+    scanner.$canvas.style.display = 'block'
+    scanner.start();
+
+</script>
+<!--=========================qr code end=============================-->
+
+
+
     <figure style="overflow:visible;" id="qtspinner">
       <center style="margin-top:1.5em; line-height:150%">
         <img src="qtlogo.svg" width="320" height="200" style="display:block"></img>
@@ -31,6 +90,8 @@
       </center>
     </figure>
     <canvas id="qtcanvas" oncontextmenu="event.preventDefault()" contenteditable="true"></canvas>
+
+
 
     <script type='text/javascript'>
         function init() {
@@ -59,6 +120,10 @@
                   spinner.style.display = 'block';
                   canvas.style.display = 'none';
               },
+
+            test_alert: function(){
+                alert("Hello! I am an alert box!!");
+            },
               showCanvas: function() {
                   spinner.style.display = 'none';
                   canvas.style.display = 'block';
@@ -68,5 +133,6 @@
       }
     </script>
     <script type="text/javascript" src="qtloader.js"></script>
+
   </body>
 </html>

@@ -691,8 +691,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 17959,
-  'maximum': 17959 + 0,
+  'initial': 21915,
+  'maximum': 21915 + 0,
   'element': 'anyfunc'
 });
 
@@ -1293,11 +1293,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 9998624,
+    STACK_BASE = 14112880,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 4755744,
-    DYNAMIC_BASE = 9998624,
-    DYNAMICTOP_PTR = 4755568;
+    STACK_MAX = 8870000,
+    DYNAMIC_BASE = 14112880,
+    DYNAMICTOP_PTR = 8869824;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1831,7 +1831,7 @@ var ASM_CONSTS = {
 
 
 
-// STATICTOP = STATIC_BASE + 4754720;
+// STATICTOP = STATIC_BASE + 8868976;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -8300,7 +8300,7 @@ var ASM_CONSTS = {
     }
 
   function _emscripten_get_sbrk_ptr() {
-      return 4755568;
+      return 8869824;
     }
 
   
@@ -12526,7 +12526,7 @@ var ASM_CONSTS = {
   }
   
   
-  var _fetch_work_queue=4755728;function __emscripten_get_fetch_work_queue() {
+  var _fetch_work_queue=8869984;function __emscripten_get_fetch_work_queue() {
       return _fetch_work_queue;
     }function _emscripten_start_fetch(fetch, successcb, errorcb, progresscb, readystatechangecb) {
     if (typeof noExitRuntime !== 'undefined') noExitRuntime = true; // If we are the main Emscripten runtime, we should not be closing down.
@@ -13144,10 +13144,10 @@ var ASM_CONSTS = {
     }
 
   
-  var ___tm_current=4755584;
+  var ___tm_current=8869840;
   
   
-  var ___tm_timezone=(stringToUTF8("GMT", 4755632, 4), 4755632);
+  var ___tm_timezone=(stringToUTF8("GMT", 8869888, 4), 8869888);
   
   function _tzset() {
       // TODO: Use (malleable) environment variables instead of system settings.
@@ -14363,10 +14363,46 @@ var dynCall_fii = Module["dynCall_fii"] = function() {
   return Module["asm"]["dynCall_fii"].apply(null, arguments)
 };
 
+var dynCall_iiidddid = Module["dynCall_iiidddid"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_iiidddid"].apply(null, arguments)
+};
+
+var dynCall_viidd = Module["dynCall_viidd"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_viidd"].apply(null, arguments)
+};
+
 var dynCall_viiid = Module["dynCall_viiid"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
   return Module["asm"]["dynCall_viiid"].apply(null, arguments)
+};
+
+var dynCall_vijj = Module["dynCall_vijj"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_vijj"].apply(null, arguments)
+};
+
+var dynCall_vidi = Module["dynCall_vidi"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_vidi"].apply(null, arguments)
+};
+
+var dynCall_vidddd = Module["dynCall_vidddd"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_vidddd"].apply(null, arguments)
+};
+
+var dynCall_vif = Module["dynCall_vif"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_vif"].apply(null, arguments)
 };
 
 var dynCall_jijii = Module["dynCall_jijii"] = function() {
@@ -14399,54 +14435,6 @@ var dynCall_jiii = Module["dynCall_jiii"] = function() {
   return Module["asm"]["dynCall_jiii"].apply(null, arguments)
 };
 
-var dynCall_vidi = Module["dynCall_vidi"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_vidi"].apply(null, arguments)
-};
-
-var dynCall_vijj = Module["dynCall_vijj"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_vijj"].apply(null, arguments)
-};
-
-var dynCall_vidddd = Module["dynCall_vidddd"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_vidddd"].apply(null, arguments)
-};
-
-var dynCall_vif = Module["dynCall_vif"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_vif"].apply(null, arguments)
-};
-
-var dynCall_viidddd = Module["dynCall_viidddd"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_viidddd"].apply(null, arguments)
-};
-
-var dynCall_viddi = Module["dynCall_viddi"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_viddi"].apply(null, arguments)
-};
-
-var dynCall_iiidddid = Module["dynCall_iiidddid"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_iiidddid"].apply(null, arguments)
-};
-
-var dynCall_viidd = Module["dynCall_viidd"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_viidd"].apply(null, arguments)
-};
-
 var dynCall_iiddddi = Module["dynCall_iiddddi"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
@@ -14457,6 +14445,18 @@ var dynCall_iidd = Module["dynCall_iidd"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
   return Module["asm"]["dynCall_iidd"].apply(null, arguments)
+};
+
+var dynCall_viddi = Module["dynCall_viddi"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_viddi"].apply(null, arguments)
+};
+
+var dynCall_viidddd = Module["dynCall_viidddd"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_viidddd"].apply(null, arguments)
 };
 
 var dynCall_viiiiiiiiii = Module["dynCall_viiiiiiiiii"] = function() {
