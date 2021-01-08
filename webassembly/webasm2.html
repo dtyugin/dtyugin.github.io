@@ -39,6 +39,7 @@
 <span id="cam-qr-result-timestamp"></span>
 <br>
 <hr>
+<button type="button" id="qml-switcher">To QML</button>
 
 <script type="module">
     import QrScanner from "../qr-code-minimal/qr-scanner.min.js";
@@ -64,6 +65,10 @@
     const scanner = new QrScanner(video, result => setResult(camQrResult, result), error => {
         camQrResult.textContent = error;
         camQrResult.style.color = 'inherit';
+    });
+
+    document.getElementById('qml-switcher').addEventListener('click', event => {
+        scanner.$canvas.style.display = 'none'
     });
 
 
