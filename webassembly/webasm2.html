@@ -23,6 +23,21 @@
   </head>
   <body onload="init()">
 <!--=========================qr code start=============================-->
+<style>
+    hr {
+        margin-top: 32px;
+    }
+    input[type="file"] {
+        display: block;
+        margin-bottom: 16px;
+    }
+    div {
+        margin-bottom: 16px;
+    }
+    #flash-toggle {
+        display: none;
+    }
+</style>
 <div>
     <video id="qr-video"  style="display:none;"></video>
     <br>
@@ -89,7 +104,7 @@
     <figure style="overflow:visible;" id="qtspinner">
       <center style="margin-top:1.5em; line-height:150%">
         <img src="qtlogo.svg" width="320" height="200" style="display:none"></img>
-        <strong>QR code web asm scanner version 5</strong>
+        <strong>QR code web asm scanner version 6</strong>
         <div id="qtstatus"></div>
         <noscript>JavaScript is disabled. Please enable JavaScript to use this application.</noscript>
       </center>
