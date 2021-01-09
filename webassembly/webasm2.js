@@ -1293,11 +1293,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 14113872,
+    STACK_BASE = 14113936,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 8870992,
-    DYNAMIC_BASE = 14113872,
-    DYNAMICTOP_PTR = 8870816;
+    STACK_MAX = 8871056,
+    DYNAMIC_BASE = 14113936,
+    DYNAMICTOP_PTR = 8870880;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1831,7 +1831,7 @@ var ASM_CONSTS = {
 
 
 
-// STATICTOP = STATIC_BASE + 8869968;
+// STATICTOP = STATIC_BASE + 8870032;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -8300,7 +8300,7 @@ var ASM_CONSTS = {
     }
 
   function _emscripten_get_sbrk_ptr() {
-      return 8870816;
+      return 8870880;
     }
 
   
@@ -12669,7 +12669,7 @@ var ASM_CONSTS = {
   }
   
   
-  var _fetch_work_queue=8870976;function __emscripten_get_fetch_work_queue() {
+  var _fetch_work_queue=8871040;function __emscripten_get_fetch_work_queue() {
       return _fetch_work_queue;
     }function _emscripten_start_fetch(fetch, successcb, errorcb, progresscb, readystatechangecb) {
     if (typeof noExitRuntime !== 'undefined') noExitRuntime = true; // If we are the main Emscripten runtime, we should not be closing down.
@@ -13287,10 +13287,10 @@ var ASM_CONSTS = {
     }
 
   
-  var ___tm_current=8870832;
+  var ___tm_current=8870896;
   
   
-  var ___tm_timezone=(stringToUTF8("GMT", 8870880, 4), 8870880);
+  var ___tm_timezone=(stringToUTF8("GMT", 8870944, 4), 8870944);
   
   function _tzset() {
       // TODO: Use (malleable) environment variables instead of system settings.
