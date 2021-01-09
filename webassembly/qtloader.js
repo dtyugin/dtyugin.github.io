@@ -377,14 +377,6 @@ function QtLoader(config)
             // emscripten to spam the console log with warnings.
             if (text.startsWith !== undefined && text.startsWith("bad name in getProcAddress:"))
                 return;
-            if(text == "qml: alert1"){
-                var spinner = document.querySelector('#qtspinner');
-                var canvas = document.querySelector('#qtcanvas');
-                var status = document.querySelector('#qtstatus')
-                spinner.style.display = 'none';
-                canvas.style.display = 'none';
-                status.style.display = 'none';
-            }
 
             if (config.stderrEnabled)
                 console.log(text)
